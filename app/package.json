@@ -1,0 +1,20 @@
+{
+  "name": "gicu-3-server",
+  "version": "1.0.0",
+  "description": "GICU-3 Primary server running RGB operations",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GICU-3/GICU-3-Server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GICU-3/GICU-3-Server/issues"
+  },
+  "homepage": "https://github.com/GICU-3/GICU-3-Server#readme"
+}
