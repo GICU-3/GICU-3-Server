@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/GICU-3/GICU-3-Server/issues"
   },
-  "homepage": "https://github.com/GICU-3/GICU-3-Server#readme"
+  "homepage": "https://github.com/GICU-3/GICU-3-Server#readme",
+  "dependencies": {
+    "dgram": "^1.0.1"
+  }
 }
