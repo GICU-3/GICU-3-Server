@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/GICU-3/GICU-3-Server#readme",
   "dependencies": {
+    "@gbkwiatt/node-rpi-ws281x-native": "^1.0.1",
     "dgram": "^1.0.1"
   }
 }
