@@ -4,8 +4,10 @@
 +─────────────────────────────────────────────────────────────────────────────────────────────────────────────+
 | This script runs the primary RGB server controlling all LED matrixies. The program listens for UDP utf-8    |
 | messages on port 8089. Specific colors are sent as hexadecimal ex. 0xFFFFFF for white or 0x00FF00 for green.|
-| Note that not adhereing to this syntaxing will cause an error. On start pixel 0 turns green to for 2000ms to|
-| signal that the program is running. In case of an error pixel 0 turns red for 1000ms.                       |
+| Note that not adhereing to this syntaxing will cause an error.                                              |
+| On start pixel [0] turns green for 2000ms to signal that the program is running. In case of an error pixel  |
+| [0] turns red for 1000ms.                                                                                   |
+| After using settings(), a restart with restart() is necessary for the changes to take action.               |
 +─────────────────────────────────────────────────────────────────────────────────────────────────────────────+
 |                                                Commands                                                     |
 +─────────────────────────────────────────────────────────────────────────────────────────────────────────────+
