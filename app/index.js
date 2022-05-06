@@ -17,6 +17,7 @@
 | stroke(n,m,color)         | stroke(2,6,0xFFFFFF)       | Fills from Nth pixel to Mth pixel a certain color  |
 | clear()                   | clear()                    | Clears all pixels                                  |
 | fill(color)               | fill(0xFFFFFF)             | Fills all pixels a certain color                   |
+| array([n,m,o],color)      | array([2,6,9],0xFFFFFF)    | Sets multiple pixels in array a certain color      |
 | settings(argument,value)  | settings(pixel_count,360)  | Edits data in settings.json                        |
 | restart()                 | restart()                  | Restarts server                                    |
 +───────────────────────────+────────────────────────────+────────────────────────────────────────────────────+
@@ -79,6 +80,14 @@ function fill(color) {
     ws281x.render();
 }
 
+// array([m,n,o],color), Sets multiple pixels in array a certain color
+function array(array,color) {
+    JSON.parse(array).forEach(element => {
+        colorArray[element] = color;    
+    });
+    ws281x.render();
+}
+
 // settings(argument, value), Edits settings
 function setting(argument, value) {
     let settings = JSON.parse(fs.readFileSync('settings.json'));
@@ -98,8 +107,6 @@ function readSettings() {
     ledCount = parseInt(settings["pixel_count"]);
 }
 
-
-
 // On incoming message
 server.on("message", function (message) {
     try {
@@ -107,7 +114,9 @@ server.on("message", function (message) {
         console.log(message);
         message = message.replace(')',''); // Remove last parenthesis of command to make command more computer-friendly
         parsed_function = message.split("(")[0]; // Split command into specific function and content/values
-        parsed_content = message.split("(")[1].split(","); // -||-
+        if (parsed_function != "array") {
+            parsed_content = message.split("(")[1].split(","); // -||-
+        }
 
         switch (parsed_function) {
             case 'pixel':
@@ -121,6 +130,11 @@ server.on("message", function (message) {
                 break;
             case 'fill':
                 fill(parsed_content[0]);
+                break;
+            case 'array':
+                parsed_content = message.split("(")[1].split("],"); // -||-
+                parsed_content[0] += ']';
+                array(parsed_content[0],parsed_content[1]);
                 break;
             case 'settings':
                 setting(parsed_content[0],parsed_content[1]);
